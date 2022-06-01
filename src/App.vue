@@ -1,32 +1,59 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-app-bar
+      app
+      color="primary"
+      dark >
+     <v-btn color="purple lighten-2" to="/list" v-if="user">
+        <v-icon>mdi-atom</v-icon>
+        <span class="mr-2"> List Desserts </span> 
+      </v-btn>
+      <v-spacer></v-spacer>
+    <div class="text-center mr-5" >
+        <v-btn rounded color="purple darken-4" dark to="/register" v-if="!user">
+        Register
+        </v-btn>
+    </div>
+    <div class="text-center mr-5">
+       <v-btn rounded color="purple darken-4" dark  to="/login"  v-if="!user">
+        Login
+       </v-btn>
+    </div>
+    <div class="text-center mr-5">
+       <v-btn  rounded color="purple darken-4" dark  v-if="user"  @click="cerrarSesion"> 
+        Logout
+       </v-btn>
+    </div>
+    </v-app-bar>
+
+    <v-main>
+      <v-container>
+        <router-view/>
+      </v-container>
+      
+    </v-main>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+ import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "./firebase";
 
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+export default {
+    name: "App",
+    data: () => ({
+        user: null,
+    }),
+    created() {
+        onAuthStateChanged(auth, (user) => {
+            this.user = user;
+        });
+    },
+    methods: {
+        async cerrarSesion() {
+            await signOut(auth);
+            this.$router.push("/login");
+        },
+    },
+};
+</script>
