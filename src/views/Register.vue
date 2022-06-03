@@ -48,10 +48,10 @@ export default {
         return {
             valid: false,
             user: {
-                email: "flory26991@gmail.com",
-                password: "123456",
-                repassword: "123456",
-                name: "florangel",
+                email: "",
+                password: "",
+                repassword: "",
+                name: "",
             },
             emailRules: [
                 (v) => (v && !!v.trim()) || "Escribe algo, no espacios!",

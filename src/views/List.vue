@@ -8,13 +8,13 @@
           <v-col cols="8" md="4">
            <v-text-field
              required
-            label="Nombre"
+            label="Name"
             v-model="dessert.name"/>
             </v-col>
         <v-col cols="8" md="4">
          <v-text-field
           required
-           label="Calorias"
+           label="Calories"
            v-model="dessert.calories"/>
         </v-col>
                 </v-row>
@@ -26,8 +26,8 @@
             <template v-slot:default>
                 <thead>
                     <tr>
-                        <th class="text-left">Nombre</th>
-                        <th class="text-left">Calorias</th>
+                        <th class="text-left">Name</th>
+                        <th class="text-left">Calories</th>
                         <th class="text-center">Actions</th>
                     </tr>
                 </thead>
@@ -41,12 +41,12 @@
                                 class="mr-2"
                                 color="red darken-1" dark
                                 @click="deleteDessertItems(item.id)"
-                                >Eliminar</v-btn
+                                >Delete</v-btn
                             >
                             <v-btn color="error" 
                             rounded
                              @click="activarUpdate(item)"
-                                >Editar</v-btn
+                                >Edit</v-btn
                             >
                         </td>
                     </tr>
@@ -57,7 +57,7 @@
         <v-dialog v-model="dialog">
             <v-card>
                 <v-card-title class="text-h5 grey lighten-2">
-                    Editar
+                    Edit
                 </v-card-title>
                 <v-card-text>
                     <v-form>

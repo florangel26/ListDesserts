@@ -2,9 +2,13 @@
   <v-app>
     <v-app-bar
       app
-      color="primary"
+      color="purple lighten-3"
       dark >
-     <v-btn color="purple lighten-2" to="/list" v-if="user">
+      <v-btn color="purple darken-2" to="/" v-if="!user">
+        <v-icon>mdi-atom</v-icon>
+        <span class="mr-2"> List Desserts </span> 
+      </v-btn>
+     <v-btn color="purple darken-2" to="/list" v-if="user">
         <v-icon>mdi-atom</v-icon>
         <span class="mr-2"> List Desserts </span> 
       </v-btn>

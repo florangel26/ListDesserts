@@ -18,10 +18,7 @@ const routes = [
   {
     path: '/list',
     name: 'list',
-    component: List,
-    meta: {
-      auth: true,
-    }
+    component: List, 
   },
   {
     path: '/login',
